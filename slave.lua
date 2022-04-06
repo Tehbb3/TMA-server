@@ -244,6 +244,7 @@ local function action()
                 rprint("Tunnel 1x1 Down")
             end
 
+
             if currentAction.type == "D3D" then
                 turtle.digDown()
                 turtle.down()
@@ -283,6 +284,55 @@ local function action()
 
                 rprint("Tunnel 3x3 Down")
             end
+
+
+            if currentAction.type == "D1u" then
+                turtle.digUp()
+                turtle.up()
+                rprint("Tunnel 1x1 Up")
+            end
+
+            if currentAction.type == "D3U" then
+                turtle.digUp()
+                turtle.up()
+
+                turtle.dig()
+                turtle.forward()
+
+                turtle.turnRight()
+                turtle.dig()
+                turtle.turnLeft()
+
+                turtle.turnLeft()
+                turtle.dig()
+                turtle.forward()
+
+                turtle.turnLeft()
+                turtle.dig()
+                turtle.forward()
+
+                turtle.dig()
+                turtle.forward()
+
+                turtle.turnLeft()
+                turtle.dig()
+                turtle.forward()
+
+                turtle.dig()
+                turtle.forward()
+
+                turtle.turnLeft()
+                turtle.dig()
+                turtle.forward()
+
+                turtle.turnLeft()
+                turtle.forward()
+                turtle.turnRight()
+
+                rprint("Tunnel 3x3 Up")
+            end
+
+            
 
 
             -- if currentAction.type == "" then
