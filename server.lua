@@ -1,9 +1,9 @@
 
 -- configuration
-local displaySide = 'left'
+local monitor = peripheral.wrap("left") 
 
 function display(dir)
-   local monitor = peripheral.wrap("back") 
+   
    monitor.setTextScale(2)
 
    monitor.setCursorPos(1,1)
