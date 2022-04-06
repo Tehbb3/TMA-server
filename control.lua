@@ -62,7 +62,6 @@ local function listen()
         local event, modemSide, senderChannel, 
         replyChannel, message, senderDistance = os.pullEvent("modem_message")
     
-        term.setCursorPos(1, 19)
     
         -- print("===== Message Recive ======")
         -- print("Channel: "..senderChannel)
@@ -71,6 +70,7 @@ local function listen()
         -- print("Message contents: \n"..message)
         -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
         term.setCursorPos(1, 19)
+        term.scroll(1)
         term.write("S>"..message)
 
     end
@@ -92,7 +92,9 @@ local function ui()
 
 
         term.setCursorPos(1, 19)
-        -- term.write("C>"..input)
+        term.write("C>"..input)
+        term.scroll(1)
+
         local inputSplit =  split(input, " ")
 
         if inputSplit[1] == "BE" then -- set controlled host
