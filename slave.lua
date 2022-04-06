@@ -238,13 +238,13 @@ local function action()
             end
 
 
-            if currentAction.type == "D1" then
+            if currentAction.type == "D1D" then
                 turtle.digDown()
                 turtle.down()
                 rprint("Tunnel 1x1 Down")
             end
 
-            if currentAction.type == "D1" then
+            if currentAction.type == "D3D" then
                 turtle.digDown()
                 turtle.down()
 
