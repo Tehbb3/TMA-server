@@ -130,7 +130,7 @@ local function action()
                 shell.run('reboot')
             end
             
-            if currentAction.type == "RESET" then
+            if currentAction.type == "REBOOT" then
                 rprint("Rebooting...")
                 shell.run('reboot')
             end
