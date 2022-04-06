@@ -106,19 +106,19 @@ local function action()
 
 
             local slaveCommands = {
-                {id="NO", fuelUse=false action="print(\"Nop\")"},
-                {id="RF", fuelUse=true action="turtle.refuel(1) fuelLevel = fuelLevel + 80 print('Refueling 1')"},
-                {id="MF", fuelUse=true action="turtle.forward() print('forward')"},
-                {id="MB", fuelUse=true action="turtle.back()    print('back')"},
-                {id="MU", fuelUse=true action="turtle.up()      print('up')"},
-                {id="MD", fuelUse=true action="turtle.down()    print('down')"},
-                {id="TL", fuelUse=true action="turtle.turnLeft()print('turn left')"},
-                {id="TR", fuelUse=true action="turtle.turnRight()print('turn right')"},
-                {id="DF", fuelUse=true action="turtle.dig() print('dig')"},
-                {id="DU", fuelUse=true action=""},
-                {id="DD", fuelUse=true action=""},
-                {id="DIE", fuelUse=true action="exit()"},
-                {id="NAH", fuelUse=true action="print('just the noo')"},
+                {id="NO", fuelUse=false, action="print(\"Nop\")"},
+                {id="RF", fuelUse=true, action="turtle.refuel(1) fuelLevel = fuelLevel + 80 print('Refueling 1')"},
+                {id="MF", fuelUse=true, action="turtle.forward() print('forward')"},
+                {id="MB", fuelUse=true, action="turtle.back()    print('back')"},
+                {id="MU", fuelUse=true, action="turtle.up()      print('up')"},
+                {id="MD", fuelUse=true, action="turtle.down()    print('down')"},
+                {id="TL", fuelUse=true, action="turtle.turnLeft()print('turn left')"},
+                {id="TR", fuelUse=true, action="turtle.turnRight()print('turn right')"},
+                {id="DF", fuelUse=true, action="turtle.dig() print('dig')"},
+                {id="DU", fuelUse=true, action=""},
+                {id="DD", fuelUse=true, action=""},
+                {id="DIE", fuelUse=true, action="exit()"},
+                {id="NAH", fuelUse=true, action="print('just the noo')"},
             }
 
 
