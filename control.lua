@@ -26,14 +26,21 @@ local modem = peripheral.wrap(config.side.modem)
 
 
 local function display(dir)
-   
-    local x, y = term.getCursorPos()
 
-    term.setCursorPos(1, 2)
-    term.clearLine()
-    write("Tehbb's MA V1.0 | HOST:"..currentControl.. " | ")
+    local runModule = true -- value so main loop can be killed
+    while runModule do -- main loop
 
-    term.setCursorPos(x, y)
+
+        local x, y = term.getCursorPos()
+
+        term.setCursorPos(1, 2)
+        term.clearLine()
+        write("Tehbb's MA V1.0 | HOST:"..currentControl.. " | ")
+
+        term.setCursorPos(x, y)
+        
+        os.sleep(1)
+    end
 end
 
 
@@ -137,7 +144,8 @@ print("main function.")
 term.setCursorPos(1, 18)
 parallel.waitForAny(
     listen,
-    ui
+    ui,
+    display
 )
 
 
