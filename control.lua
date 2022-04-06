@@ -29,8 +29,11 @@ local function display(dir)
    
     local x, y = term.getCursorPos()
 
-    term.setCursorPos(1, 20)
-    write("HST:"..currentControl.. " | ")
+    term.setCursorPos(1, 2)
+    term.clearLine()
+    write("Tehbb's MA V1.0 | HOST:"..currentControl.. " | ")
+
+    term.setCursorPos(x, y)
 end
 
 
