@@ -61,11 +61,12 @@ local function ui()
     local runModule = true -- value so main loop can be killed
     while runModule do -- main loop
 
-
-        local input = read()
-
         term.setCursorPos(1, 18)
-        term.write("C>"..input)
+        term.clearLine()
+        term.write("C>")
+        local input = read()
+        term.setCursorPos(1, 18)
+        term.write(input)
         modem.transmit(config.network.serverPort, config.network.clientPort, input)
 
     
