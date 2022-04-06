@@ -111,7 +111,7 @@ local function action()
             else
                 rprint("Fuel level : "..turtle.getFuelLevel())
             end
-        else
+        end
 
 
 
