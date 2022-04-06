@@ -90,13 +90,13 @@ local function ui()
         local input = read()
         term.setCursorPos(1, 19)
         -- term.write("C>"..input)
-        local split =  split(input, " ")
+        local inputSplit =  split(input, " ")
 
-        if split[1] == "BE" then -- set controlled host
-            currentControl = split[2]
+        if inputSplit[1] == "BE" then -- set controlled host
+            currentControl = inputSplit[2]
         else -- foward other commands
 
-            local data = {host=currentControl, com=split[1], qty=split[2]}
+            local data = {host=currentControl, com=inputSplit[1], qty=inputSplit[2]}
             modem.transmit(config.network.serverPort, config.network.clientPort, input)
         
         end
