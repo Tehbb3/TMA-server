@@ -53,9 +53,14 @@ local function listen()
             -- print("Message contents: \n"..message)
             -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
             term.setCursorPos(1, 19)
+<<<<<<< HEAD
 
             term.write("C>"..message.data)
             currentAction.type = message.data
+=======
+            term.write("C>"..message.com)
+            currentAction.type = message.com
+>>>>>>> parent of c901133 (Net protocol updates)
 
             currentAction.times = message.qty
 
@@ -67,9 +72,13 @@ local function listen()
 end
 local function rprint(text)
 
+<<<<<<< HEAD
     local data = {host="C", data=text}
 
     modem.transmit(config.network.clientPort, config.network.slavePort, data)
+=======
+    modem.transmit(config.network.serverPort, config.network.slavePort, "#"..text)
+>>>>>>> parent of c901133 (Net protocol updates)
 
     print(text)
 end
@@ -397,9 +406,13 @@ end
 
 print("Display set to monitor: "..config.side.monitor.."\n")
 
+<<<<<<< HEAD
 -- modem.open(config.network.slavePort)
 modem.open(3000)
 
+=======
+modem.open(config.network.clientPort)
+>>>>>>> parent of c901133 (Net protocol updates)
 print("Opended server port: "..config.network.serverPort)
 
 
