@@ -4,10 +4,10 @@ local monitor = peripheral.wrap("left")
 
 function display(dir)
    
-   monitor.setTextScale(2)
+--    monitor.setTextScale(2)
 
-   monitor.setCursorPos(1,1)
-   monitor.clearLine()
+--    monitor.setCursorPos(1,1)
+--    monitor.clearLine()
    monitor.write("Display")
 end
 
