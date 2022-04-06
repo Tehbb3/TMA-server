@@ -6,8 +6,9 @@ local config = {
         modem = "back"
     },
     network = {
-        serverPort = 2000, -- port to send to server
+        serverPort = 1000, -- port to send to server
         clientPort = 2000, -- listen port for client
+        slavePort = 3000, -- send port for the slave
     }
 
 }
@@ -81,14 +82,24 @@ local function listen()
         -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
         term.setCursorPos(1, 19)
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 09dee08 (Revert)
         if message.host == "C" then
             term.write("C>"..message.data)
         else
             term.write(message.host..">"..message.data)
         end
+<<<<<<< HEAD
 =======
         term.write("S>"..message)
 >>>>>>> parent of c901133 (Net protocol updates)
+=======
+        term.write("S"..message.host..">"..message.data)
+>>>>>>> parent of c73b64e (Bokeh??)
+=======
+>>>>>>> parent of 09dee08 (Revert)
         term.scroll(1)
 
 
@@ -131,8 +142,8 @@ local function ui()
                 times = tonumber(inputSplit[2])
             end
 
-            local data = {host=currentControl, com=inputSplit[1], qty=times}
-            modem.transmit(config.network.serverPort, config.network.clientPort, data)
+            local data = {host=currentControl, data=inputSplit[1], qty=times}
+            modem.transmit(config.network.slavePort, config.network.clientPort, data)
         
         end
     
