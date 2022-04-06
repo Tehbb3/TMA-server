@@ -44,12 +44,14 @@ local function listen()
     
         term.setCursorPos(1, 19)
     
-        print("===== Message Recive ======")
-        print("Channel: "..senderChannel)
-        print("Reply channel: "..replyChannel)
-        print("Modem on "..modemSide.." side")
-        print("Message contents: \n"..message)
-        print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
+        -- print("===== Message Recive ======")
+        -- print("Channel: "..senderChannel)
+        -- print("Reply channel: "..replyChannel)
+        -- print("Modem on "..modemSide.." side")
+        -- print("Message contents: \n"..message)
+        -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
+        term.setCursorPos(1, 19)
+        term.write("S>"..message)
 
     end
 
@@ -62,7 +64,8 @@ local function ui()
     while runModule do -- main loop
 
         term.setCursorPos(1, 19)
-        term.write("C>")
+        term.clearLine()
+        -- term.write("C>")
         local input = read()
         term.setCursorPos(1, 19)
         term.write("C>"..input)
