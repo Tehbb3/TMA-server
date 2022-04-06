@@ -113,6 +113,11 @@ local function action()
                 {id="MD", action="turtle.down()    print('down')"},
                 {id="TL", action="turtle.turnLeft()print('turn left')"},
                 {id="TR", action="turtle.turnRight()print('turn right')"},
+                {id="DF", action="turtle.dig() print('dig')"},
+                {id="DU", action=""},
+                {id="DD", action=""},
+                {id="DIE", action="exit()"},
+                {id="NAH", action="print('just the noo')"},
             }
 
 
