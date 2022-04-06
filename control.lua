@@ -83,8 +83,10 @@ modem.open(config.network.clientPort)
 print("Opended server port: "..config.network.serverPort)
 
 
+
 print("main function.")
 
+term.setCursorPos(1, 18)
 parallel.waitForAny(
     listen,
     ui
