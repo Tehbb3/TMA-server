@@ -104,16 +104,15 @@ local function action()
             -- end
 
 
-
             local slaveCommands = {
                 {id="NO", action="print('Nop')"},
-                {id="RF", action="turtle.refuel(1)"},
-                {id="MF", action="turtle.forward()"},
-                {id="MB", action="turtle.back()"},
-                {id="MU", action="turtle.up()"},
-                {id="MD", action="turtle.down()"},
-                {id="TL", action="turtle.turnLeft()"},
-                {id="TR", action="turtle.turnRight()"},
+                {id="RF", action="turtle.refuel(1) print('Refueling 1')"},
+                {id="MF", action="turtle.forward() print('forward')"},
+                {id="MB", action="turtle.back()    print('back')"},
+                {id="MU", action="turtle.up()      print('up')"},
+                {id="MD", action="turtle.down()    print('down')"},
+                {id="TL", action="turtle.turnLeft()print('turn left')"},
+                {id="TR", action="turtle.turnRight()print('turn right')"},
             }
 
 
