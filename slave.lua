@@ -62,7 +62,8 @@ local function listen()
         term.setCursorPos(1, 19)
         term.write("C>"..message.com)
         currentAction.type = message.com
-        currentAction.times = message.times
+
+        currentAction.times = message.qty
 
     end
 

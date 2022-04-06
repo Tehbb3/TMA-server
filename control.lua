@@ -110,7 +110,7 @@ local function ui()
             if inputSplit[2] == nil then
                 times = 1
             else
-                times = inputSplit[2]
+                times = tonumber(inputSplit[2])
             end
 
             local data = {host=currentControl, com=inputSplit[1], qty=times}
