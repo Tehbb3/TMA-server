@@ -84,10 +84,13 @@ local function ui()
     local runModule = true -- value so main loop can be killed
     while runModule do -- main loop
 
+        -- setup ui
         term.setCursorPos(1, 19)
         term.clearLine()
-        -- term.write("C>")
+        term.write("C>")
         local input = read()
+
+
         term.setCursorPos(1, 19)
         -- term.write("C>"..input)
         local inputSplit =  split(input, " ")
@@ -97,11 +100,16 @@ local function ui()
         else -- foward other commands
 
             local data = {host=currentControl, com=inputSplit[1], qty=inputSplit[2]}
-            modem.transmit(config.network.serverPort, config.network.clientPort, input)
+            modem.transmit(config.network.serverPort, config.network.clientPort, data)
         
         end
     
     end
+
+
+
+
+
 
 end
 
