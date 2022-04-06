@@ -24,13 +24,13 @@ local controlPrefix = "C>"
 -- local monitor = peripheral.wrap(config.side.monitor) 
 local modem = peripheral.wrap(config.side.modem)
 
+
 local function display(dir)
    
-   monitor.setTextScale(2)
+    local x, y = term.getCursorPos()
 
-   monitor.setCursorPos(1,1)
-   monitor.clearLine()
-   monitor.write("Display")
+    term.setCursorPos(1, 20)
+    write("HST:"..currentControl.. " | ")
 end
 
 

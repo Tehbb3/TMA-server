@@ -31,14 +31,6 @@ local slaveFuel = 0
 local modem = peripheral.wrap(config.side.modem)
 
 
-local function display(dir)
-   
-   monitor.setTextScale(2)
-
-   monitor.setCursorPos(1,1)
-   monitor.clearLine()
-   monitor.write("Display")
-end
 
 
 
