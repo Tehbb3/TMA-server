@@ -97,40 +97,40 @@ local function action()
             os.sleep(0.5)
         else
 
-            -- if currentAction.type == "MF" then
-            --     turtle.foward()
-            -- end
+        -- -- if currentAction.type == "MF" then
+        -- --     turtle.foward()
+        -- -- end
 
 
 
-            local slaveCommands = {
-                {id="NO", action="print('Nop')"},
-                {id="MF", action="turtle.forward()"},
-                {id="MB", action="turtle.back()"},
-                {id="MU", action="turtle.up()"},
-                {id="MD", action="turtle.down()"},
-                {id="TL", action="turtle.turnLeft()"},
-                {id="TR", action="turtle.turnRight()"},
-            }
+        --     local slaveCommands = {
+        --         {id="NO", action="print('Nop')"},
+        --         {id="MF", action="turtle.forward()"},
+        --         {id="MB", action="turtle.back()"},
+        --         {id="MU", action="turtle.up()"},
+        --         {id="MD", action="turtle.down()"},
+        --         {id="TL", action="turtle.turnLeft()"},
+        --         {id="TR", action="turtle.turnRight()"},
+        --     }
 
 
 
-            n = 1
-            while slaveCommands[n] ~= nil do
+        --     n = 1
+        --     while slaveCommands[n] ~= nil do
 
-                if slaveCommands[n].id == currentAction.type then
-                    local func, err = loadstring(slaveCommands[n].action)
+        --         if slaveCommands[n].id == currentAction.type then
+        --             local func, err = loadstring(slaveCommands[n].action)
                     
-                    if func then -- check if the function is loaded
-                        func() -- run the function
-                    else
-                        print("Error: ", err) -- error loading the string
-                    end
-                end
-                n = n + 1
-            end
+        --             if func then -- check if the function is loaded
+        --                 func() -- run the function
+        --             else
+        --                 print("Error: ", err) -- error loading the string
+        --             end
+        --         end
+        --         n = n + 1
+        --     end
 
-            currentAction.times = currentAction.times - 1 -- decrement action
+        --     currentAction.times = currentAction.times - 1 -- decrement action
 
         end
 

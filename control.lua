@@ -69,7 +69,7 @@ local function ui()
         -- term.write("C>")
         local input = read()
         term.setCursorPos(1, 19)
-        term.write("C>"..input)
+        -- term.write("C>"..input)
 
         modem.transmit(config.network.serverPort, config.network.clientPort, input)
 
