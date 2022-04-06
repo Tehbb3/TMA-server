@@ -60,7 +60,7 @@ local function listen()
         -- print("Message contents: \n"..message)
         -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
         term.setCursorPos(1, 19)
-        term.write("S>"..message)
+        term.write("C>"..message.com)
         currentAction.type = message.com
         currentAction.times = message.times
 
