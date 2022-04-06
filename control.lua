@@ -59,7 +59,7 @@ local function ui()
     while runModule do -- main loop
 
 
-        local input = read("*")
+        local input = read()
         print(input)
     
     end
