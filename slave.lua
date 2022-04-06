@@ -180,7 +180,7 @@ local function action()
             if currentAction.type == "D1" then
                 turtle.dig()
                 turtle.forward()
-                rprint("Tunnel 1")
+                rprint("Tunnel 1x1")
             end
 
             if currentAction.type == "D2" then
@@ -203,7 +203,7 @@ local function action()
                 turtle.down()
                 turtle.dig()
                 turtle.turnLeft()
-                rprint("Tunnel 2")
+                rprint("Tunnel 3x2")
             end
 
             if currentAction.type == "D3" then
@@ -232,9 +232,9 @@ local function action()
                 turtle.digDown()
                 turtle.down()
                 turtle.dig()
-                
+
                 turtle.turnLeft()
-                rprint("Tunnel 2")
+                rprint("Tunnel 3x3")
             end
 
 
