@@ -23,6 +23,7 @@ local currentAction = {
     type = "NO",
     times = 0,
 }
+local fuelLevel = 0
 -- local monitor = peripheral.wrap(config.side.monitor) 
 local modem = peripheral.wrap(config.side.modem)
 
@@ -95,7 +96,7 @@ local function action()
     while runModule do -- main loop
 
         if (currentAction.type == "NO") or (currentAction.times == 0) then
-            print("NO ACTION")
+            print("NO ACTION - "..fuelLevel)
             os.sleep(0.5)
         else
 
@@ -105,19 +106,19 @@ local function action()
 
 
             local slaveCommands = {
-                {id="NO", action="print('Nop')"},
-                {id="RF", action="turtle.refuel(1) print('Refueling 1')"},
-                {id="MF", action="turtle.forward() print('forward')"},
-                {id="MB", action="turtle.back()    print('back')"},
-                {id="MU", action="turtle.up()      print('up')"},
-                {id="MD", action="turtle.down()    print('down')"},
-                {id="TL", action="turtle.turnLeft()print('turn left')"},
-                {id="TR", action="turtle.turnRight()print('turn right')"},
-                {id="DF", action="turtle.dig() print('dig')"},
-                {id="DU", action=""},
-                {id="DD", action=""},
-                {id="DIE", action="exit()"},
-                {id="NAH", action="print('just the noo')"},
+                {id="NO", fuelUse=false action="print(\"Nop\")"},
+                {id="RF", fuelUse=true action="turtle.refuel(1) fuelLevel = fuelLevel + 80 print('Refueling 1')"},
+                {id="MF", fuelUse=true action="turtle.forward() print('forward')"},
+                {id="MB", fuelUse=true action="turtle.back()    print('back')"},
+                {id="MU", fuelUse=true action="turtle.up()      print('up')"},
+                {id="MD", fuelUse=true action="turtle.down()    print('down')"},
+                {id="TL", fuelUse=true action="turtle.turnLeft()print('turn left')"},
+                {id="TR", fuelUse=true action="turtle.turnRight()print('turn right')"},
+                {id="DF", fuelUse=true action="turtle.dig() print('dig')"},
+                {id="DU", fuelUse=true action=""},
+                {id="DD", fuelUse=true action=""},
+                {id="DIE", fuelUse=true action="exit()"},
+                {id="NAH", fuelUse=true action="print('just the noo')"},
             }
 
 
@@ -130,6 +131,9 @@ local function action()
                     
                     if func then -- check if the function is loaded
                         func() -- run the function
+                        if slaveCommands[n].fuelUse == true then
+                            fuelLevel = fuelLevel - 1
+                        end
                     else
                         print("Error: ", err) -- error loading the string
                     end
