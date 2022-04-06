@@ -23,7 +23,7 @@ local currentAction = {
     type = "NO",
     times = 0,
 }
-local fuelLevel = 0
+local slaveFuel = 0
 -- local monitor = peripheral.wrap(config.side.monitor) 
 local modem = peripheral.wrap(config.side.modem)
 
@@ -96,7 +96,7 @@ local function action()
     while runModule do -- main loop
 
         if (currentAction.type == "NO") or (currentAction.times == 0) then
-            print("NO ACTION - "..fuelLevel)
+            print("NO ACTION - "..slaveFuel)
             os.sleep(0.5)
         else
 
@@ -107,7 +107,7 @@ local function action()
 
             local slaveCommands = {
                 {id="NO", fuelUse=false, action="print(\"Nop\")"},
-                {id="RF", fuelUse=true, action="turtle.refuel(1) fuelLevel = fuelLevel + 80 print('Refueling 1')"},
+                {id="RF", fuelUse=true, action="turtle.refuel(1) slaveFuel = slaveFuel + 80 print('Refueling 1')"},
                 {id="MF", fuelUse=true, action="turtle.forward() print('forward')"},
                 {id="MB", fuelUse=true, action="turtle.back()    print('back')"},
                 {id="MU", fuelUse=true, action="turtle.up()      print('up')"},
@@ -132,7 +132,7 @@ local function action()
                     if func then -- check if the function is loaded
                         func() -- run the function
                         if slaveCommands[n].fuelUse == true then
-                            fuelLevel = fuelLevel - 1
+                            slaveFuel = slaveFuel - 1
                         end
                     else
                         print("Error: ", err) -- error loading the string
