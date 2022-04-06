@@ -294,7 +294,7 @@ local function action()
             end
 
 
-            if currentAction.type == "D1u" then
+            if currentAction.type == "D1U" then
                 turtle.digUp()
                 turtle.up()
                 rprint("Tunnel 1x1 Up")
