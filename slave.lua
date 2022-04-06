@@ -126,13 +126,21 @@ local function action()
             if currentAction.type == "UPDATE" then
                 rprint("Updating slave ...")
                 shell.run('/tma/update')
-                rprint('Update (probably) complete! - Slave will reboot')
+                rprint('Done! Rebooting...')
                 shell.run('reboot')
             end
+            
+            if currentAction.type == "RESET" then
+                rprint("Rebooting...")
+                shell.run('reboot')
+            end
+
 
             if currentAction.type == "FL" then
                 rprint("Fuel level : "..turtle.getFuelLevel())
             end
+
+
 
 
             -- MOVEMENT
@@ -333,7 +341,7 @@ local function action()
             end
 
             
-
+            -- VV probably the better way but multiple commands is broken i think? idk ^^^ easier
 
             -- if currentAction.type == "" then
             --     turtle.
