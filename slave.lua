@@ -183,6 +183,60 @@ local function action()
                 rprint("Tunnel 1")
             end
 
+            if currentAction.type == "D2" then
+                -- move layer
+                turtle.dig()
+                turtle.forward()
+                
+
+                turtle.turnLeft()
+                turtle.dig()
+                turtle.digUp()
+                turtle.up()
+                turtle.dig()
+
+                turtle.turnRight()
+                turtle.turnRight()
+
+                turtle.dig()
+                turtle.digDown()
+                turtle.down()
+                turtle.dig()
+                turtle.turnLeft()
+                rprint("Tunnel 2")
+            end
+
+            if currentAction.type == "D3" then
+                -- move layer
+                turtle.dig()
+                turtle.forward()
+                
+
+                turtle.turnLeft()
+                turtle.dig()
+                turtle.digUp()
+                turtle.up()
+                turtle.dig()
+                turtle.digUp()
+                turtle.up()
+                turtle.dig()
+                
+
+                turtle.turnRight()
+                turtle.turnRight()
+
+                turtle.dig()
+                turtle.digDown()
+                turtle.down()
+                turtle.dig()
+                turtle.digDown()
+                turtle.down()
+                turtle.dig()
+                
+                turtle.turnLeft()
+                rprint("Tunnel 2")
+            end
+
 
             -- if currentAction.type == "" then
             --     turtle.

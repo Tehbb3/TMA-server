@@ -11,6 +11,6 @@ shell.run('cp', '/disk/*', '/tma') -- coppy files from disk
 -- enable a file to run on startup from install
 
 
-shell.run('cp', '/tma/slaveStartup', '/startup')
+shell.run('cp', '/tma/slaveStartup.lua', '/startup')
 
 
