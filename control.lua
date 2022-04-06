@@ -19,6 +19,8 @@ print("/_  __/  |/  / _ |____/ __/")
 print(" / / / /|_/ / __ /___/\\ \\ ") 
 print("/_/ /_/  /_/_/ |_|  /___/ ")
 
+local currentControl = 0 -- host 0 is all
+
 -- local monitor = peripheral.wrap(config.side.monitor) 
 local modem = peripheral.wrap(config.side.modem)
 
@@ -70,9 +72,16 @@ local function ui()
         local input = read()
         term.setCursorPos(1, 19)
         -- term.write("C>"..input)
+        local split =  Split(input, " ")
 
-        modem.transmit(config.network.serverPort, config.network.clientPort, input)
+        if split[1] == "BE" then -- set controlled host
+            currentControl = split[2]
+        else -- foward other commands
 
+            local data = {host=currentControl, com=split[1], qty=split[2]}
+            modem.transmit(config.network.serverPort, config.network.clientPort, input)
+        
+        end
     
     end
 

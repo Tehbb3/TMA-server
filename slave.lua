@@ -81,6 +81,7 @@ action types
 NO - Do nothing
 
 RF - Refuel
+FL - Show fuel level
 
 MF - Fowards
 MB - move Backwards
@@ -120,6 +121,11 @@ local function action()
             rprint("NO ACTION - "..slaveFuel)
             os.sleep(0.5)
         else
+
+            
+            if currentAction.type == "FL" then
+                rprint("Fuel level : "..turtle.getFuelLevel())
+            end
 
 
             -- MOVEMENT
