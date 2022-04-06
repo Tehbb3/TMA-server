@@ -105,8 +105,15 @@ local function ui()
         if inputSplit[1] == "BE" then -- set controlled host
             currentControl = inputSplit[2]
         else -- foward other commands
+            
+            local times = 1
+            if inputSplit[2] == nil then
+                times = 1
+            else
+                times = inputSplit[2]
+            end
 
-            local data = {host=currentControl, com=inputSplit[1], qty=inputSplit[2]}
+            local data = {host=currentControl, com=inputSplit[1], qty=times}
             modem.transmit(config.network.serverPort, config.network.clientPort, data)
         
         end
