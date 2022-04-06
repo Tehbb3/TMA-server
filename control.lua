@@ -60,6 +60,8 @@ local function ui()
 
 
         local input = read()
+        modem.transmit(config.network.serverPort, config.network.clientPort, input)
+
         print(input)
     
     end
