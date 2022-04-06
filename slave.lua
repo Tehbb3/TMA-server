@@ -20,7 +20,7 @@ local autoRefuelThreshold = 200
 print('TMA Slave V1') -- less configgy
 os.setComputerLabel("Tehbb's Slave") -- default
 local slaveLavelPrefix = "TehSlave-"
-local slaveID = 0
+local slaveID = "0"
 
 local currentAction = {
     type = "NO",
@@ -44,7 +44,7 @@ local function listen()
         local event, modemSide, senderChannel, 
         replyChannel, message, senderDistance = os.pullEvent("modem_message")
     
-        if (message.host == 0) or (message.host == slaveID) then -- only care if need to
+        if (message.host == "0") or (message.host == slaveID) then -- only care if need to
 
             -- print("===== Message Recive ======")
             -- print("Channel: "..senderChannel)
@@ -94,6 +94,10 @@ DD - Dig down
 D1 - Dig 1x1
 D2 - Dig 3x2
 D3 - Dig 3x3
+
+D1D - Dig 1x1 Down
+D3D - Dig 1x1 Down
+
 ]]--
 
 
@@ -231,6 +235,53 @@ local function action()
 
                 turtle.turnLeft()
                 rprint("Tunnel 3x3")
+            end
+
+
+            if currentAction.type == "D1" then
+                turtle.digDown()
+                turtle.down()
+                rprint("Tunnel 1x1 Down")
+            end
+
+            if currentAction.type == "D1" then
+                turtle.digDown()
+                turtle.down()
+
+                turtle.dig()
+                turtle.forward()
+
+                turtle.turnRight()
+                turtle.dig()
+                turtle.turnLeft()
+
+                turtle.turnLeft()
+                turtle.dig()
+                turtle.forward()
+
+                turtle.turnLeft()
+                turtle.dig()
+                turtle.forward()
+
+                turtle.dig()
+                turtle.forward()
+
+                turtle.turnLeft()
+                turtle.dig()
+                turtle.forward()
+
+                turtle.dig()
+                turtle.forward()
+
+                turtle.turnLeft()
+                turtle.dig()
+                turtle.forward()
+
+                turtle.turnLeft()
+                turtle.forward()
+                turtle.turnRight()
+
+                rprint("Tunnel 3x3 Down")
             end
 
 
