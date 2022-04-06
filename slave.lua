@@ -53,8 +53,8 @@ local function listen()
             -- print("Message contents: \n"..message)
             -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
             term.setCursorPos(1, 19)
-            term.write("C>"..message.com)
-            currentAction.type = message.com
+            term.write("C>"..message.data)
+            currentAction.type = message.data
 
             currentAction.times = message.qty
 
@@ -66,7 +66,9 @@ local function listen()
 end
 local function rprint(text)
 
-    modem.transmit(config.network.serverPort, config.network.slavePort, "#"..text)
+    local data = {host=slaveID, data=text}
+
+    modem.transmit(config.network.clientPort, config.network.slavePort, data)
 
     print(text)
 end
@@ -394,7 +396,7 @@ end
 
 print("Display set to monitor: "..config.side.monitor.."\n")
 
-modem.open(config.network.clientPort)
+modem.open(config.network.slavePort)
 print("Opended server port: "..config.network.serverPort)
 
 
