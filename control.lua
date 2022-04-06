@@ -2,7 +2,7 @@
 -- configuration
 local config = {
     side = {
-        -- monitor = "left",
+        monitor = "left",
         modem = "back"
     },
     network = {
