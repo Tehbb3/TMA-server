@@ -4,7 +4,7 @@ local config = {
     side = {
         monitor = "left",
         modem = "back"
-    }
+    },
     network = {
         serverPort = 1000, -- listening port for server
         clientPort = 2000, -- client recive port-transmit
@@ -31,7 +31,7 @@ function display(dir)
    monitor.write("Display")
 end
 
-print("Display set to monitor: "..monitorDirection.."\n")
+print("Display set to monitor: "..config.side.monitor.."\n")
 
 modem.open(config.network.serverPort)
 print("Opended server port: "..config.network.serverPort)
