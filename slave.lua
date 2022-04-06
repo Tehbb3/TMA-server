@@ -110,7 +110,7 @@ local function action()
             if turtle.getFuelLevel() < autoRefuelThreshold then
                 turtle.refuel(1)
             else
-                rprint("Fuel level : "..turtle.getFuelLevel())
+                -- rprint("Fuel level : "..turtle.getFuelLevel())
             end
         end
 
@@ -118,8 +118,8 @@ local function action()
 
 
         if (currentAction.type == "NO") or (currentAction.times == 0) then
-            rprint("NO ACTION - "..slaveFuel)
-            os.sleep(0.5)
+            -- rprint("NO ACTION - "..slaveFuel)
+            os.sleep(1) -- leave to prevent stop thingy??
         else
 
             
