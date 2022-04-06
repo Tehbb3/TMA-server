@@ -33,13 +33,13 @@ local function display(dir)
 
         local x, y = term.getCursorPos()
 
-        term.setCursorPos(1, 2)
+        term.setCursorPos(1, 1)
         term.clearLine()
-        write("Tehbb's MA V1.0 | HOST:"..currentControl.. " | ")
+        write("Tehbb's MA V1.0 | #"..currentControl.. "/")
 
         term.setCursorPos(x, y)
-        
-        os.sleep(1)
+
+        os.sleep(0.1)
     end
 end
 

@@ -16,10 +16,11 @@ local config = {
 local autoRefuel = true
 local autoRefuelThreshold = 200
 
-print("________  ______      ____")
-print("/_  __/  |/  / _ |____/ __/")
-print(" / / / /|_/ / __ /___/\\ \\ ") 
-print("/_/ /_/  /_/_/ |_|  /___/ ")
+
+print('TMA Slave V1') -- less configgy
+os.setComputerLabel("Tehbb's Slave") -- default
+local slaveLavelPrefix = "TehSlave-"
+local slaveID = 0
 
 local currentAction = {
     type = "NO",
@@ -43,19 +44,22 @@ local function listen()
         local event, modemSide, senderChannel, 
         replyChannel, message, senderDistance = os.pullEvent("modem_message")
     
-        term.setCursorPos(1, 19)
-    
-        -- print("===== Message Recive ======")
-        -- print("Channel: "..senderChannel)
-        -- print("Reply channel: "..replyChannel)
-        -- print("Modem on "..modemSide.." side")
-        -- print("Message contents: \n"..message)
-        -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
-        term.setCursorPos(1, 19)
-        term.write("C>"..message.com)
-        currentAction.type = message.com
+        if (message.host == 0) or (message.host == slaveID) then -- only care if need to
 
-        currentAction.times = message.qty
+            -- print("===== Message Recive ======")
+            -- print("Channel: "..senderChannel)
+            -- print("Reply channel: "..replyChannel)
+            -- print("Modem on "..modemSide.." side")
+            -- print("Message contents: \n"..message)
+            -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
+            term.setCursorPos(1, 19)
+            term.write("C>"..message.com)
+            currentAction.type = message.com
+
+            currentAction.times = message.qty
+
+        end
+        
 
     end
 
