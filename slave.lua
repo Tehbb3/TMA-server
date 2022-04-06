@@ -70,6 +70,8 @@ end
 action types
 NO - Do nothing
 
+RF - Refuel
+
 MF - Fowards
 MB - move Backwards
 MU - move upwards
@@ -105,6 +107,7 @@ local function action()
 
             local slaveCommands = {
                 {id="NO", action="print('Nop')"},
+                {id="RF", action="turtle.refuel(1)"},
                 {id="MF", action="turtle.forward()"},
                 {id="MB", action="turtle.back()"},
                 {id="MU", action="turtle.up()"},
