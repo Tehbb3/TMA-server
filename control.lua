@@ -90,7 +90,7 @@ local function ui()
         local input = read()
         term.setCursorPos(1, 19)
         -- term.write("C>"..input)
-        local split =  Split(input, " ")
+        local split =  split(input, " ")
 
         if split[1] == "BE" then -- set controlled host
             currentControl = split[2]
