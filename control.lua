@@ -32,6 +32,7 @@ local function display(dir)
 end
 
 
+
 local function listen()
 
     local runModule = true -- value so main loop can be killed
@@ -40,6 +41,8 @@ local function listen()
 
         local event, modemSide, senderChannel, 
         replyChannel, message, senderDistance = os.pullEvent("modem_message")
+    
+        term.setCursorPos(1, 18)
     
         print("===== Message Recive ======")
         print("Channel: "..senderChannel)
@@ -60,9 +63,11 @@ local function ui()
 
 
         local input = read()
+
+        term.setCursorPos(1, 18)
+        term.write("C>"..input)
         modem.transmit(config.network.serverPort, config.network.clientPort, input)
 
-        print(input)
     
     end
 
