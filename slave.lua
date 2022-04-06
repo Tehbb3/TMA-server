@@ -123,7 +123,13 @@ local function action()
             os.sleep(1) -- leave to prevent stop thingy??
         else
 
-            
+            if currentAction.type == "UPDATE" then
+                rprint("Updating slave ...")
+                shell.run('/tma/update')
+                rprint('Update (probably) complete! - Slave will reboot')
+                shell.run('reboot')
+            end
+
             if currentAction.type == "FL" then
                 rprint("Fuel level : "..turtle.getFuelLevel())
             end
