@@ -20,7 +20,7 @@ print(" / / / /|_/ / __ /___/\\ \\ ")
 print("/_/ /_/  /_/_/ |_|  /___/ ")
 
 local currentControl = 0 -- host 0 is all
-
+local controlPrefix = "C>"
 -- local monitor = peripheral.wrap(config.side.monitor) 
 local modem = peripheral.wrap(config.side.modem)
 
@@ -70,8 +70,13 @@ local function listen()
         -- print("Message contents: \n"..message)
         -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
         term.setCursorPos(1, 19)
-        term.scroll(1)
         term.write("S>"..message)
+        term.scroll(1)
+
+
+        term.setCursorPos(1, 19)
+        term.clearLine()
+        term.write(controlPrefix)
 
     end
 
@@ -87,13 +92,13 @@ local function ui()
         -- setup ui
         term.setCursorPos(1, 19)
         term.clearLine()
-        term.write("C>")
+        term.write(controlPrefix)
         local input = read()
 
 
-        term.setCursorPos(1, 19)
-        term.write("C>"..input)
-        term.scroll(1)
+        -- term.setCursorPos(1, 19)
+        -- term.write("C>"..input)
+        -- term.scroll(1)
 
         local inputSplit =  split(input, " ")
 
@@ -108,14 +113,7 @@ local function ui()
     
     end
 
-
-
-
-
-
 end
-
-
 
 print("Display set to monitor: "..config.side.monitor.."\n")
 
