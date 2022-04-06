@@ -190,8 +190,8 @@ local function action()
                 
 
                 turtle.turnLeft()
-                turtle.dig()
                 turtle.digUp()
+                turtle.dig()
                 turtle.up()
                 turtle.dig()
 
@@ -213,11 +213,11 @@ local function action()
                 
 
                 turtle.turnLeft()
-                turtle.dig()
                 turtle.digUp()
+                turtle.dig()
                 turtle.up()
-                turtle.dig()
                 turtle.digUp()
+                turtle.dig()
                 turtle.up()
                 turtle.dig()
                 
