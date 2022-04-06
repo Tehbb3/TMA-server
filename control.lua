@@ -58,24 +58,6 @@ local function listen()
 end
 
 
-local function ui()
-
-    local runModule = true -- value so main loop can be killed
-    while runModule do -- main loop
-
-        term.setCursorPos(1, 19)
-        term.clearLine()
-        -- term.write("C>")
-        local input = read()
-        term.setCursorPos(1, 19)
-        term.write("C>"..input)
-
-        modem.transmit(config.network.serverPort, config.network.clientPort, input)
-
-    
-    end
-
-end
 
 
 
@@ -95,6 +77,24 @@ parallel.waitForAny(
     ui
 )
 
+local function ui()
+
+    local runModule = true -- value so main loop can be killed
+    while runModule do -- main loop
+
+        term.setCursorPos(1, 19)
+        term.clearLine()
+        -- term.write("C>")
+        local input = read()
+        term.setCursorPos(1, 19)
+        term.write("C>"..input)
+
+        modem.transmit(config.network.serverPort, config.network.clientPort, input)
+
+    
+    end
+
+end
 
     -- display(displaySide)
     -- os.sleep(0.5) -- just to limit main loop
