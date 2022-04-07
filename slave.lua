@@ -229,7 +229,7 @@ local function action()
 
             if currentAction.type == "UPDATE" then
                 rprint("Updating slave ...")
-                shell.run('/tma/update')
+                shell.run('/update')
                 rprint('Done! Rebooting...')
                 shell.run('reboot')
             end
