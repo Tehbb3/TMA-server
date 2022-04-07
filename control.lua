@@ -40,7 +40,8 @@ local function display(dir)
 
         term.setCursorPos(1, 1)
         term.clearLine()
-        write("TehMA V1.0 | #"..currentControl.."/"..totalSlaves.." F:"..currentFuel)
+        -- write("TehMA V1.0 | #"..currentControl.."/"..totalSlaves.." F:"..currentFuel)
+        write("TehMA V1.0 | #"..currentControl.."/"..totalSlaves)
 
         term.setCursorPos(x, y)
 
@@ -135,8 +136,8 @@ local function ui()
         if input ~= "" then
 
             term.setCursorPos(1, 19)
-            term.write("C>"..input)
-            term.scroll(1)
+            -- term.write("C>"..input)
+            -- term.scroll(1)
 
             local inputSplit =  split(input, " ")
 
