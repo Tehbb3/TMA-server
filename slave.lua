@@ -273,8 +273,8 @@ local function action()
             end
 
             if currentAction.type == "HFL" then
-
-                local data = {host=slaveID, hidden=true, com="FL", data=turtle.getFuelLevel()}
+                local fuel = turtle.getFuelLevel()
+                local data = {host=slaveID, hidden=true, com="FL", data=fuel}
 
                 modem.transmit(config.network.clientPort, config.network.slavePort, data)
             
