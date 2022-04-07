@@ -154,7 +154,7 @@ local function grabber()
 
        -- print("Attempting to resolve DID with network...")
 
-        local data = {host=0, data="IDS", qty=1}
+        local data = {host=0, com="NO", data="IDS", qty=1}
 
         modem.transmit(config.network.clientPort, config.network.slavePort, data)
 
