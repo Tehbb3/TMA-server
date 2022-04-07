@@ -9,6 +9,8 @@ Cant really be bothered to document this right now :/
 But you can probably work everything out
 
 
+for updating:
+http://www.computercraft.info/forums2/index.php?/topic/29920-simple-github-util/
 
 ## Possible actions
 ---

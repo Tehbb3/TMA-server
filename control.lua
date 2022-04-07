@@ -89,11 +89,19 @@ local function listen()
 
 
         
-        if message.data == "IDR" then
-            totalSlaves = message.com
+        if message.data == "IDI" then
+            totalSlaves = message.qty
         end
         if message.com == "FL" then
             currentFuel = message.data
+        end
+
+
+        if message.data == "IDS" then 
+            local data = {host=0, data="IDR", com=totalSlaves, qty=1}
+
+            modem.transmit(config.network.clientPort, config.network.slavePort, data)
+            rprint("IDS data requested")
         end
 
 
