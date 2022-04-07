@@ -81,25 +81,15 @@ local function listen()
         -- print("Message contents: \n"..message)
         -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
         term.setCursorPos(1, 19)
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 09dee08 (Revert)
+
         if message.host == "C" then
             term.write("C>"..message.data)
         else
             term.write(message.host..">"..message.data)
         end
-<<<<<<< HEAD
-=======
-        term.write("S>"..message)
->>>>>>> parent of c901133 (Net protocol updates)
-=======
-        term.write("S"..message.host..">"..message.data)
->>>>>>> parent of c73b64e (Bokeh??)
-=======
->>>>>>> parent of 09dee08 (Revert)
+
+
+
         term.scroll(1)
 
 

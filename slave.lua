@@ -53,14 +53,7 @@ local function listen()
             -- print("Message contents: \n"..message)
             -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
             term.setCursorPos(1, 19)
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 09dee08 (Revert)
 
-=======
->>>>>>> parent of c73b64e (Bokeh??)
             term.write("C>"..message.data)
             currentAction.type = message.data
 
@@ -74,15 +67,8 @@ local function listen()
 end
 local function rprint(text)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 09dee08 (Revert)
-    local data = {host="C", data=text}
-=======
-    local data = {host=slaveID, data=text}
->>>>>>> parent of c73b64e (Bokeh??)
+
+    local data = {host=slaveID, com="NO", data=text}
 
     modem.transmit(config.network.clientPort, config.network.slavePort, data)
 
@@ -412,23 +398,11 @@ end
 
 print("Display set to monitor: "..config.side.monitor.."\n")
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
 -- modem.open(config.network.slavePort)
 modem.open(3000)
 
-=======
-modem.open(config.network.clientPort)
->>>>>>> parent of c901133 (Net protocol updates)
-=======
-modem.open(config.network.slavePort)
->>>>>>> parent of c73b64e (Bokeh??)
-=======
--- modem.open(config.network.slavePort)
-modem.open(3000)
-
->>>>>>> parent of 09dee08 (Revert)
 print("Opended server port: "..config.network.serverPort)
 
 
