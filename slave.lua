@@ -308,7 +308,7 @@ local function action()
                 print("Item damage value: ", item.damage)
                 print("Item count: ", item.count)
                 rprint("dmg:"..item.damage.." qty:"..item.count)
-                rprint("nme:"..item.name)
+                rprint(item.name)
                 end
                 
                 
@@ -323,7 +323,7 @@ local function action()
                     local item = turtle.getItemDetail()
                     if item then
                         rprint("Slot:"..slot.." dmg:"..item.damage.." qty:"..item.count)
-                        rprint("nme:"..item.name)
+                        rprint(item.name)
                     end
                 end
                 turtle.select(ogSlot) -- return to old state
