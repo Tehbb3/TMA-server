@@ -553,6 +553,8 @@ parallel.waitForAny( -- get dynaic id
 
 print("main function.")
 
+rprint("Booted!")
+
 term.setCursorPos(1, 18)
 parallel.waitForAny(
     listen,
