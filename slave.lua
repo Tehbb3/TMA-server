@@ -163,6 +163,11 @@ IDI - Increment or update DID data
 
 SID - Slave id
 
+PL - Place selected item
+SE - Select inventory slot
+ST - What is the selected item??
+SA - Show all items
+
 RF - Refuel
 FL - Show fuel level
 
@@ -190,9 +195,7 @@ D21D- Dig 2x1 Down
 D2D - Dig 2x2 down
 D3D - Dig 1x1 Down
 
-PL - Place selected item
-SE - Select inventory slot
-ST - What is the selected item??
+
 
 ]]--
 
@@ -267,22 +270,25 @@ local function action()
             end
 
             if currentAction.type == "DM" then
+                local ogSlot = turtle.getSelectedSlot()
                 rprint("Dumping most items")
                 for slot=1,16 do
                     print(slot)
                     turtle.select(slot)
                     local item = turtle.getItemDetail()
                     if item then
-                        if (item.name = "minecraft:coal") then
+                        if (item.name == "minecraft:coal") then
                             print("coal found: not dropping")
                         else
                             turtle.drop()
                         end
                     end
                 end
+                turtle.select(ogSlot) -- return to old state
+
             end
 
-            
+
             if currentAction.type == "PL" then
                 turtle.place()
                 rprint("Place")
@@ -301,11 +307,27 @@ local function action()
                 print("Item name: ", item.name)
                 print("Item damage value: ", item.damage)
                 print("Item count: ", item.count)
-                rprint("dmg:"..item.damage.." qty:"..item.count..")
+                rprint("dmg:"..item.damage.." qty:"..item.count)
                 rprint("nme:"..item.name)
                 end
                 
                 
+            end
+
+            if currentAction.type == "SA" then
+                local ogSlot = turtle.getSelectedSlot()
+                rprint("Dumping most items")
+                for slot=1,16 do
+                    print(slot)
+                    turtle.select(slot)
+                    local item = turtle.getItemDetail()
+                    if item then
+                        rprint("Slot:"..slot.." dmg:"..item.damage.." qty:"..item.count)
+                        rprint("nme:"..item.name)
+                    end
+                end
+                turtle.select(ogSlot) -- return to old state
+
             end
 
 
