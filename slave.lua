@@ -268,10 +268,48 @@ local function action()
 
             if currentAction.type == "DM" then
                 rprint("Dumping most items")
-
-                turtle.drop()
-
+                for slot=1,16 do
+                    print(slot)
+                    turtle.select(slot)
+                    local item = turtle.getItemDetail()
+                    if item then
+                        if (item.name = "minecraft:coal") then
+                            print("coal found: not dropping")
+                        else
+                            turtle.drop()
+                        end
+                    end
+                end
             end
+
+            
+            if currentAction.type == "PL" then
+                turtle.place()
+                rprint("Place")
+            end
+
+            if currentAction.type == "SE" then
+                turtle.select(currentAction.times)
+                rprint("Select slot"..currentAction.times)
+                currentAction.times = 1 -- will be decremented to 0 later :/
+            end
+
+            if currentAction.type == "ST" then
+                local item = turtle.getItemDetail()
+
+                if item then
+                print("Item name: ", item.name)
+                print("Item damage value: ", item.damage)
+                print("Item count: ", item.count)
+                rprint("dmg:"..item.damage.." qty:"..item.count..")
+                rprint("nme:"..item.name)
+                end
+                
+                
+            end
+
+
+
 
             -- MOVEMENT
             if currentAction.type == "MF" then
@@ -516,30 +554,7 @@ local function action()
 
             
 
-            if currentAction.type == "PL" then
-                turtle.place()
-                rprint("Place")
-            end
 
-            if currentAction.type == "SE" then
-                turtle.select(currentAction.times)
-                rprint("Select slot"..currentAction.times)
-                currentAction.times = 1 -- will be decremented to 0 later :/
-            end
-
-            if currentAction.type == "ST" then
-                local item = turtle.getItemDetail()
-
-                if item then
-                print("Item name: ", item.name)
-                print("Item damage value: ", item.damage)
-                print("Item count: ", item.count)
-                rprint("dmg:"..item.damage.." qty:"..item.count..")
-                rprint("nme:"..item.name)
-                end
-                
-                
-            end
 
 
             -- VV probably the better way but multiple commands is broken i think? idk ^^^ easier
