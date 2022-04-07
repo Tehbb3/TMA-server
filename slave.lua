@@ -55,8 +55,8 @@ local function listen()
             -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
             term.setCursorPos(1, 19)
 
-            term.write("C>"..message.com)
-            currentAction.type = message.com
+            term.write("C>"..message.data)
+            currentAction.type = message.data
 
             currentAction.times = message.qty
 
@@ -83,6 +83,7 @@ local function dynamicId()
     local runModule = true -- value so main loop can be killed
     while runModule do -- main loop
 
+        print("Listening for DID")
 
         local event, modemSide, senderChannel, 
         replyChannel, message, senderDistance = os.pullEvent("modem_message")
@@ -99,8 +100,13 @@ local function dynamicId()
                 local data = {host=0, data="IDI", qty=totalSlaves}
 
                 modem.transmit(config.network.clientPort, config.network.slavePort, data)
+                
+                os.setComputerLabel(slaveLavelPrefix..slaveID) -- default
+                
                 print("Updated self to DID Network")
                 
+                runModule = false
+                print("Run module killed")
             
 
             end
@@ -136,6 +142,8 @@ NO - Do nothing
 IDS - Request DID data from network
 IDR - DID data response
 IDI - Increment or update DID data
+
+SID - Slave id
 
 RF - Refuel
 FL - Show fuel level
@@ -221,6 +229,9 @@ local function action()
                 rprint("Fuel level : "..turtle.getFuelLevel())
             end
 
+            if currentAction.type == "SID" then
+                rprint("sid:"..slaveID)
+            end
 
 
 
