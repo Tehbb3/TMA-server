@@ -267,8 +267,17 @@ local function action()
 
                 modem.transmit(config.network.clientPort, config.network.slavePort, data)
             
-                -- rprint("Fuel level : "..turtle.getFuelLevel())
+                rprint("Fuel level : "..turtle.getFuelLevel())
             end
+
+            if currentAction.type == "HFL" then
+
+                local data = {host=slaveID, hidden=true, com="FL", data=turtle.getFuelLevel()}
+
+                modem.transmit(config.network.clientPort, config.network.slavePort, data)
+            
+            end
+
 
             if currentAction.type == "SID" then
                 rprint("sid:"..slaveID)

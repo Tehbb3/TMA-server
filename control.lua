@@ -86,21 +86,25 @@ local function listen()
         -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
         term.setCursorPos(1, 19)
 
-        if message.host == "C" then
-            term.write("C>"..message.data)
+        if message.hidden == true then
+
         else
-            term.write(message.host..">"..message.data)
+
+            if message.host == "C" then
+                term.write("C>"..message.data)
+            else
+                term.write(message.host..">"..message.data)
+            end
+
+
+
+            term.scroll(1)
+
+
+            term.setCursorPos(1, 19)
+            term.clearLine()
+            term.write(controlPrefix)
         end
-
-
-
-        term.scroll(1)
-
-
-        term.setCursorPos(1, 19)
-        term.clearLine()
-        term.write(controlPrefix)
-
     end
 
 end
@@ -183,7 +187,7 @@ local function grabber()
                 end
 
             end
-            -- sleep(0.1) -- dont go too fast
+            sleep(1) -- dont go too fast
         end
 
 
@@ -196,7 +200,7 @@ local function grabber()
             currentFuel = 0
         else
                 
-            local data = {host=currentControl, com="NO", data="FL", qty=1}
+            local data = {host=currentControl, com="NO", data="HFL", qty=1}
 
             modem.transmit(config.network.slavePort, config.network.clientPort, data)
 
@@ -224,7 +228,7 @@ local function grabber()
                     end
 
                 end
-                -- sleep(0.1) -- dont go too fast
+                sleep(1) -- dont go too fast
             end
 
         end
