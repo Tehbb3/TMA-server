@@ -20,8 +20,10 @@ print("________  ______      ____")
 print("/_  __/  |/  / _ |____/ __/")
 print(" / / / /|_/ / __ /___/\\ \\ ") 
 print("/_/ /_/  /_/_/ |_|  /___/ ")
-
 local currentControl = 0 -- host 0 is all
+local totalSlaves = 0
+
+
 local controlPrefix = "C>"
 -- local monitor = peripheral.wrap(config.side.monitor) 
 local modem = peripheral.wrap(config.side.modem)
@@ -37,7 +39,7 @@ local function display(dir)
 
         term.setCursorPos(1, 1)
         term.clearLine()
-        write("Tehbb's MA V1.0 | #"..currentControl.. "/")
+        write("Tehbb's MA V1.0 | #"..currentControl.."/"..totalSlaves)
 
         term.setCursorPos(x, y)
 
@@ -143,7 +145,59 @@ local function ui()
 
 end
 
-print("Display set to monitor: "..config.side.monitor.."\n")
+
+local function grabber()
+
+            
+    local runModule = true -- value so main loop can be killed
+    while runModule do -- main loop
+
+       -- print("Attempting to resolve DID with network...")
+
+        local data = {host=0, data="IDS", qty=1}
+
+        modem.transmit(config.network.clientPort, config.network.slavePort, data)
+
+        local runModuleGrabDID = true
+        while runModuleGrabDID do -- main loop
+
+            print("Listening for DID")
+
+            local event, modemSide, senderChannel, 
+            replyChannel, message, senderDistance = os.pullEvent("modem_message")
+        
+            if (tonumber(message.host) == 0) then -- only care if need to
+
+                if message.data == "IDR" then
+
+                    -- print("Network DID data recevied")
+                    totalSlaves = message.com
+                    -- slaveID = totalSlaves + 1
+                    -- totalSlaves = totalSlaves + 1
+        
+                    runModuleGrabDID = false
+                    -- print("Run module killed")
+                
+
+                end
+
+            end
+            sleep(0.1) -- dont go too fast
+        end
+    end
+    
+
+end
+
+
+
+
+
+
+
+
+
+-- print("Display set to monitor: "..config.side.monitor.."\n")
 
 modem.open(config.network.clientPort)
 print("Opended server port: "..config.network.serverPort)
@@ -156,7 +210,8 @@ term.setCursorPos(1, 18)
 parallel.waitForAny(
     listen,
     ui,
-    display
+    display,
+    grabber
 )
 
 
