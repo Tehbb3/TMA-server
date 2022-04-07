@@ -126,6 +126,8 @@ local function dynamicIdWaiter()
         -- set some defaults
         totalSlaves = 1
         slaveID = 1
+
+        os.setComputerLabel(slaveLavelPrefix..slaveID) -- default
     end
 
 end
@@ -236,6 +238,15 @@ local function action()
                 rprint("Rebooting...")
                 shell.run('reboot')
             end
+
+            if currentAction.type == "RECONSTRUCT" then
+                rprint("Waiting for reconstruct :"..((totalSlaves-slaveID)/2)+6)
+                sleep(((totalSlaves-slaveID)/2)+6) -- wait based on network order
+                rprint("Rebooting...")
+                shell.run('reboot')
+
+            end
+
 
 
             if currentAction.type == "FL" then
