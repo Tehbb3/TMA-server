@@ -142,10 +142,10 @@ local function rprint(text)
 
     modem.transmit(config.network.clientPort, config.network.slavePort, data)
 
-    -- print(text)
-    term.setCursorPos(1, 19)
-    term.write("$>"..text)
-    term.scroll(1)
+    print(text)
+    -- term.setCursorPos(1, 19)
+    -- term.write("$>"..text)
+    -- term.scroll(1)
 end
 
 
@@ -555,7 +555,7 @@ print("main function.")
 
 rprint("Booted!")
 
-term.setCursorPos(1, 18)
+-- term.setCursorPos(1, 18)
 parallel.waitForAny(
     listen,
     action
