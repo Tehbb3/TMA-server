@@ -316,7 +316,7 @@ local function action()
 
             if currentAction.type == "SA" then
                 local ogSlot = turtle.getSelectedSlot()
-                rprint("Dumping most items")
+                rprint("Showing all items:")
                 for slot=1,16 do
                     print(slot)
                     turtle.select(slot)
