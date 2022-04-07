@@ -142,7 +142,10 @@ local function rprint(text)
 
     modem.transmit(config.network.clientPort, config.network.slavePort, data)
 
-    print(text)
+    -- print(text) --Y broken????? tf
+
+    print(slaveID)
+
     -- term.setCursorPos(1, 19)
     -- term.write("$>"..text)
     -- term.scroll(1)
@@ -178,7 +181,11 @@ D1 - Dig 1x1
 D2 - Dig 3x2
 D3 - Dig 3x3
 
+DS - Dig srip mine
+
 D1D - Dig 1x1 Down
+D21D- Dig 2x1 Down
+D2D - Dig 2x2 down
 D3D - Dig 1x1 Down
 
 PL - Place selected item
@@ -330,6 +337,15 @@ local function action()
                 rprint("Tunnel 3x2")
             end
 
+            if currentAction.type == "DS" then
+                -- move layer
+                turtle.dig()
+                turtle.forward()
+                turtle.digUp()
+
+                rprint("Tunnel Strip")
+            end
+
             if currentAction.type == "D3" then
                 -- move layer
                 turtle.dig()
@@ -366,6 +382,41 @@ local function action()
                 turtle.digDown()
                 turtle.down()
                 rprint("Tunnel 1x1 Down")
+            end
+
+
+
+
+            if currentAction.type == "D2D" then
+                turtle.digDown()
+                turtle.down()
+
+                turtle.dig()
+                turtle.forward()
+
+                turtle.turnRight()
+                turtle.dig()
+                turtle.turnRight()
+
+                turtle.dig()
+                turtle.forward()
+
+                turtle.turnLeft()
+                turtle.dig()
+
+                turtle.turnLeft()
+
+                rprint("Tunnel 2x2 Down")
+            end
+
+            if currentAction.type == "D21D" then
+                turtle.digDown()
+                turtle.down()
+
+                turtle.dig()
+
+
+                rprint("Tunnel 2x1 Down")
             end
 
 
