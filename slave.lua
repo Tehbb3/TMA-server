@@ -68,6 +68,7 @@ local function listen()
 end
 
 
+local runModuleDID = true -- value external so can be killed externally
 
 
 local function dynamicId()
@@ -80,8 +81,7 @@ local function dynamicId()
     modem.transmit(config.network.clientPort, config.network.slavePort, data)
 
 
-    local runModule = true -- value so main loop can be killed
-    while runModule do -- main loop
+    while runModuleDID do -- main loop
 
         print("Listening for DID")
 
@@ -113,6 +113,19 @@ local function dynamicId()
 
         end
 
+    end
+
+end
+local function dynamicIdWaiter()
+
+    sleep(5) -- delay before giving up on network
+
+    if totalSlaves == 0 then -- if still on default net position
+
+        print("No network found setting defaults")
+        -- set some defaults
+        totalSlaves = 1
+        slaveID = 1
     end
 
 end
@@ -175,7 +188,7 @@ ST - What is the selected item??
 
 local function action() 
 
-    local runModule = true -- value so main loop can be killed
+    local runModule = true -- so that module can be kill
     while runModule do -- main loop
 
         
@@ -523,7 +536,8 @@ print("Opended server port: "..config.network.slavePort)
 
 
 parallel.waitForAny( -- get dynaic id
-    dynamicId
+    dynamicId,
+    dynamicIdWaiter
 )
 
 print("main function.")
