@@ -166,6 +166,8 @@ SID - Slave id
 RF - Refuel
 FL - Show fuel level
 
+DM - Dump most items (except slot 1 coal)
+
 MF - Fowards
 MB - move Backwards
 MU - move upwards
@@ -264,7 +266,12 @@ local function action()
                 rprint("sid:"..slaveID)
             end
 
+            if currentAction.type == "DM" then
+                rprint("Dumping most items")
 
+                turtle.drop()
+
+            end
 
             -- MOVEMENT
             if currentAction.type == "MF" then
@@ -527,7 +534,8 @@ local function action()
                 print("Item name: ", item.name)
                 print("Item damage value: ", item.damage)
                 print("Item count: ", item.count)
-                rprint("dmg:"..item.damage.." qty:"..item.count.." nme:"..item.name)
+                rprint("dmg:"..item.damage.." qty:"..item.count..")
+                rprint("nme:"..item.name)
                 end
                 
                 
