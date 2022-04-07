@@ -262,7 +262,12 @@ local function action()
 
 
             if currentAction.type == "FL" then
-                rprint("Fuel level : "..turtle.getFuelLevel())
+
+                local data = {host=slaveID, com="FL", data=turtle.getFuelLevel()}
+
+                modem.transmit(config.network.clientPort, config.network.slavePort, data)
+            
+                -- rprint("Fuel level : "..turtle.getFuelLevel())
             end
 
             if currentAction.type == "SID" then

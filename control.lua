@@ -21,6 +21,7 @@ print("/_  __/  |/  / _ |____/ __/")
 print(" / / / /|_/ / __ /___/\\ \\ ") 
 print("/_/ /_/  /_/_/ |_|  /___/ ")
 local currentControl = 0 -- host 0 is all
+local currentFuel = 0
 local totalSlaves = 0
 
 
@@ -39,7 +40,7 @@ local function display(dir)
 
         term.setCursorPos(1, 1)
         term.clearLine()
-        write("Tehbb's MA V1.0 | #"..currentControl.."/"..totalSlaves)
+        write("TehMA V1.0 | #"..currentControl.."/"..totalSlaves.." F:"..currentFuel)
 
         term.setCursorPos(x, y)
 
@@ -182,8 +183,54 @@ local function grabber()
                 end
 
             end
-            sleep(0.1) -- dont go too fast
+            -- sleep(0.1) -- dont go too fast
         end
+
+
+
+
+
+
+        -- print("Attempting to resolve DID with network...")
+        if currentControl == 0 then
+            currentFuel = 0
+        else
+                
+            local data = {host=currentControl, com="NO", data="FL", qty=1}
+
+            modem.transmit(config.network.slavePort, config.network.clientPort, data)
+
+            local runModuleGrabDID = true
+            while runModuleGrabDID do -- main loop
+
+                -- print("Listening for DID")
+
+                local event, modemSide, senderChannel, 
+                replyChannel, message, senderDistance = os.pullEvent("modem_message")
+            
+                if (tonumber(message.host) == 0) then -- only care if need to
+
+                    if message.com == "FL" then
+
+                        -- print("Network DID data recevied")
+                        currentFuel = message.data
+                        -- slaveID = totalSlaves + 1
+                        -- totalSlaves = totalSlaves + 1
+            
+                        runModuleGrabDID = false
+                        -- print("Run module killed")
+                    
+
+                    end
+
+                end
+                -- sleep(0.1) -- dont go too fast
+            end
+
+        end
+
+
+
     end
     
 
