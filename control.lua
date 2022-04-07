@@ -14,7 +14,8 @@ local config = {
 }
 
 
-
+term.clear()
+term.setCursorPos(1,1)
 print("________  ______      ____")
 print("/_  __/  |/  / _ |____/ __/")
 print(" / / / /|_/ / __ /___/\\ \\ ") 
