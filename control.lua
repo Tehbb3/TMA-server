@@ -153,16 +153,16 @@ local function ui()
                 currentControl = inputSplit[2]
             else -- foward other commands
                 
-            local times = 1
-            if inputSplit[2] == nil then
-                times = 1
-            else
-                times = tonumber(inputSplit[2])
-            end
+                local times = 1
+                if inputSplit[2] == nil then
+                    times = 1
+                else
+                    times = tonumber(inputSplit[2])
+                end
 
-            local data = {host=currentControl, com="NO", data=inputSplit[1], qty=times}
-            modem.transmit(config.network.slavePort, config.network.clientPort, data)
-        
+                local data = {host=currentControl, com="NO", data=inputSplit[1], qty=times}
+                modem.transmit(config.network.slavePort, config.network.clientPort, data)
+            end
         end
     
     end
