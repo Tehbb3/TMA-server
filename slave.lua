@@ -72,7 +72,10 @@ local function rprint(text)
 
     modem.transmit(config.network.clientPort, config.network.slavePort, data)
 
-    print(text)
+    -- print(text)
+    term.setCursorPos(1, 19)
+    term.write("$>"..text)
+    term.scroll(1)
 end
 
 
