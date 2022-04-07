@@ -86,6 +86,16 @@ local function listen()
         -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
         term.setCursorPos(1, 19)
 
+
+        
+        if message.data == "IDR" then
+            totalSlaves = message.com
+        end
+        if message.com == "FL" then
+            currentFuel = message.data
+        end
+
+
         if message.hidden == true then
 
         else
@@ -262,7 +272,7 @@ parallel.waitForAny(
     listen,
     ui,
     display,
-    grabber
+    -- grabber
 )
 
 
