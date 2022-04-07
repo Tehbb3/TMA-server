@@ -148,7 +148,7 @@ end
 
 local function grabber()
 
-            
+
     local runModule = true -- value so main loop can be killed
     while runModule do -- main loop
 
@@ -156,12 +156,12 @@ local function grabber()
 
         local data = {host=0, com="NO", data="IDS", qty=1}
 
-        modem.transmit(config.network.clientPort, config.network.slavePort, data)
+        modem.transmit(config.network.slavePort, config.network.clientPort, data)
 
         local runModuleGrabDID = true
         while runModuleGrabDID do -- main loop
 
-            print("Listening for DID")
+            -- print("Listening for DID")
 
             local event, modemSide, senderChannel, 
             replyChannel, message, senderDistance = os.pullEvent("modem_message")
