@@ -105,6 +105,10 @@ D3 - Dig 3x3
 D1D - Dig 1x1 Down
 D3D - Dig 1x1 Down
 
+PL - Place selected item
+SE - Select inventory slot
+ST - What is the selected item??
+
 ]]--
 
 
@@ -348,6 +352,32 @@ local function action()
             end
 
             
+
+            if currentAction.type == "PL" then
+                turtle.place()
+                rprint("Place")
+            end
+
+            if currentAction.type == "SE" then
+                turtle.select(currentAction.times)
+                rprint("Select slot"..currentAction.times)
+                currentAction.times = 1 -- will be decremented to 0 later :/
+            end
+
+            if currentAction.type == "ST" then
+                local item = turtle.getItemDetail()
+
+                if item then
+                print("Item name: ", item.name)
+                print("Item damage value: ", item.damage)
+                print("Item count: ", item.count)
+                rprint("dmg:"..item.damage.." qty:"..item.count.." nme:"..item.name)
+                end
+                
+                
+            end
+
+
             -- VV probably the better way but multiple commands is broken i think? idk ^^^ easier
 
             -- if currentAction.type == "" then
