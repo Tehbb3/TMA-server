@@ -403,10 +403,10 @@ print("Display set to monitor: "..config.side.monitor.."\n")
 
 
 
--- modem.open(config.network.slavePort)
-modem.open(3000)
+modem.open(config.network.slavePort)
+-- modem.open(3000)
 
-print("Opended server port: "..config.network.serverPort)
+print("Opended server port: "..config.network.slavePort)
 
 
 
