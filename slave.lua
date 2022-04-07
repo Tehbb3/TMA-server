@@ -118,7 +118,7 @@ local function dynamicId()
 end
 local function dynamicIdWaiter()
 
-    sleep(5) -- delay before giving up on network
+    sleep(1) -- delay before giving up on network
 
     if totalSlaves == 0 then -- if still on default net position
 
