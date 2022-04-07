@@ -262,7 +262,7 @@ local function action()
                 modem.transmit(config.network.clientPort, config.network.slavePort, data)
 
                 rprint("Waiting for reconstruct :"..((totalSlaves-slaveID)/2)+6)
-                sleep(((totalSlaves-slaveID)/2)+6) -- wait based on network order
+                sleep(((totalSlaves-slaveID)*3)+6) -- wait based on network order
                 rprint("Rebooting...")
                 shell.run('reboot')
 
