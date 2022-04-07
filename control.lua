@@ -100,8 +100,8 @@ local function listen()
         if message.data == "IDS" then 
             local data = {host=0, data="IDR", com=totalSlaves, qty=1}
 
-            modem.transmit(config.network.clientPort, config.network.slavePort, data)
-            rprint("IDS data requested")
+            modem.transmit(config.network.slavePort, config.network.slavePort, data)
+            print("IDS data requested")
         end
 
 
@@ -149,9 +149,9 @@ local function ui()
 
             local inputSplit =  split(input, " ")
 
-            -- if inputSplit[1] == "BE" then -- set controlled host
-            --     currentControl = inputSplit[2]
-            -- else -- foward other commands
+            if inputSplit[1] == "BE" then -- set controlled host
+                currentControl = inputSplit[2]
+            else -- foward other commands
                 
             local times = 1
             if inputSplit[2] == nil then
