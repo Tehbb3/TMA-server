@@ -116,9 +116,9 @@ local function ui()
         local input = read()
 
 
-        -- term.setCursorPos(1, 19)
-        -- term.write("C>"..input)
-        -- term.scroll(1)
+        term.setCursorPos(1, 19)
+        term.write("C>"..input)
+        term.scroll(1)
 
         local inputSplit =  split(input, " ")
 
