@@ -144,7 +144,7 @@ local function rprint(text)
 
     -- print(text) --Y broken????? tf
 
-    print(slaveID)
+    print(text)
 
     -- term.setCursorPos(1, 19)
     -- term.write("$>"..text)
@@ -195,6 +195,8 @@ D21D- Dig 2x1 Down
 D2D - Dig 2x2 down
 D3D - Dig 1x1 Down
 
+D1U - dig 1x1 up
+D3U - dig 3x3 up
 
 
 ]]--
@@ -664,6 +666,7 @@ parallel.waitForAny( -- get dynaic id
 print("main function.")
 
 rprint("Booted!")
+print("Slaveid: "..slaveID)
 
 -- term.setCursorPos(1, 18)
 parallel.waitForAny(
