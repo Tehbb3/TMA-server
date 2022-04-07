@@ -20,7 +20,7 @@ local autoRefuelThreshold = 200
 print('TMA Slave V1') -- less configgy
 os.setComputerLabel("Tehbb's Slave") -- default
 local slaveLavelPrefix = "TehSlave-"
-local slaveID = "0"
+local slaveID = 0
 
 local currentAction = {
     type = "NO",
@@ -44,7 +44,7 @@ local function listen()
         local event, modemSide, senderChannel, 
         replyChannel, message, senderDistance = os.pullEvent("modem_message")
     
-        if (message.host == "0") or (message.host == slaveID) then -- only care if need to
+        if (tonumber(message.host) == 0) or (tonumber(message.host) == slaveID) then -- only care if need to
 
             -- print("===== Message Recive ======")
             -- print("Channel: "..senderChannel)
