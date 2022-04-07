@@ -271,7 +271,7 @@ term.setCursorPos(1, 18)
 parallel.waitForAny(
     listen,
     ui,
-    display,
+    display
     -- grabber
 )
 
