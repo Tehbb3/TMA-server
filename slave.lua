@@ -21,6 +21,7 @@ print('TMA Slave V1') -- less configgy
 os.setComputerLabel("Tehbb's Slave") -- default
 local slaveLavelPrefix = "TehSlave-"
 local slaveID = 0
+local totalSlaves = 0
 
 local currentAction = {
     type = "NO",
@@ -54,8 +55,8 @@ local function listen()
             -- print("Sender is "..(senderDistance or "an unknown number of").." blocks away")
             term.setCursorPos(1, 19)
 
-            term.write("C>"..message.data)
-            currentAction.type = message.data
+            term.write("C>"..message.com)
+            currentAction.type = message.com
 
             currentAction.times = message.qty
 
@@ -65,6 +66,54 @@ local function listen()
     end
 
 end
+
+
+
+
+local function dynamicId()
+
+            
+    print("Attempting to resolve DID with network...")
+
+    local data = {host=0, data="IDS", qty=1}
+
+    modem.transmit(config.network.clientPort, config.network.slavePort, data)
+
+
+    local runModule = true -- value so main loop can be killed
+    while runModule do -- main loop
+
+
+        local event, modemSide, senderChannel, 
+        replyChannel, message, senderDistance = os.pullEvent("modem_message")
+    
+        if (tonumber(message.host) == 0) or (tonumber(message.host) == slaveID) then -- only care if need to
+
+            if message.data == "IDR" then
+
+                print("Network DID data recevied")
+                totalSlaves = message.com
+                slaveID = totalSlaves + 1
+                totalSlaves = totalSlaves + 1
+    
+                local data = {host=0, data="IDI", qty=totalSlaves}
+
+                modem.transmit(config.network.clientPort, config.network.slavePort, data)
+                print("Updated self to DID Network")
+                
+            
+
+            end
+
+        end
+
+    end
+
+end
+
+
+
+
 local function rprint(text)
 
 
@@ -83,6 +132,10 @@ end
 --[[
 action types
 NO - Do nothing
+
+IDS - Request DID data from network
+IDR - DID data response
+IDI - Increment or update DID data
 
 RF - Refuel
 FL - Show fuel level
@@ -133,6 +186,23 @@ local function action()
             -- rprint("NO ACTION - "..slaveFuel)
             os.sleep(1) -- leave to prevent stop thingy??
         else
+
+
+            if currentAction.type == "IDS" then
+                
+                local data = {host=0, data="IDR", com=totalSlaves, qty=1}
+
+                modem.transmit(config.network.clientPort, config.network.slavePort, data)
+                rprint("IDS data requested")
+            end
+
+            
+            if currentAction.type == "IDI" then
+
+                totalSlaves = currentAction.times
+                currentAction.times = 1 -- will be decremented to 0 later :/
+                rprint("IDS data incremented")
+            end
 
             if currentAction.type == "UPDATE" then
                 rprint("Updating slave ...")
@@ -439,6 +509,11 @@ modem.open(config.network.slavePort)
 print("Opended server port: "..config.network.slavePort)
 
 
+
+
+parallel.waitForAny( -- get dynaic id
+    dynamicId
+)
 
 print("main function.")
 
