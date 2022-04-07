@@ -254,6 +254,13 @@ local function action()
             end
 
             if currentAction.type == "RECONSTRUCT" then
+
+                
+                local data = {host=0, data="IDI", qty=0}
+                totalSlaves = 0 -- not really needed bouta reboot
+
+                modem.transmit(config.network.clientPort, config.network.slavePort, data)
+
                 rprint("Waiting for reconstruct :"..((totalSlaves-slaveID)/2)+6)
                 sleep(((totalSlaves-slaveID)/2)+6) -- wait based on network order
                 rprint("Rebooting...")
