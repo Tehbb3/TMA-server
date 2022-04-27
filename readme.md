@@ -15,7 +15,9 @@ kina just threw this one together .-.
 for updating:
 http://www.computercraft.info/forums2/index.php?/topic/29920-simple-github-util/
 
-## Possible actions
+
+
+### Sending commands
 ---
 
 [command] [times to run]
@@ -26,6 +28,13 @@ Digs 3x3 tunnel for 5 blocks
 
 stopping a command just send a random command e.g "TL" and it will stop the turtles
 
+### Kina important with control:
+---
+turtle 0 is broadcast so you can send commands to every turtle at once
+
+
+## Possible actions
+---
 command | description
 NO - Do nothing
 
@@ -83,6 +92,4 @@ e.g:
 BE 4
 will set turtle control to turtle 4
 
-### Kina important:
----
-turtle 0 is broadcast so you can send commands to every turtle at once
+
